@@ -7,19 +7,15 @@
 <body ng-controller="crudController">
     <h1>User Management</h1>
     
-    <!-- Form for adding a new user -->
     <form ng-submit="addUser()" name="userForm">
         Name: <input type="text" ng-model="name" required>
-        <!-- Display validation error message if the name is not entered -->
         <div ng-show="userForm.userName.$dirty && userForm.userName.$error.required">Name is required.</div>
         <br> <br>
         Age: <input type="number" ng-model="age" required> <br>
-        <!-- Submit button triggers the 'addUser' function -->
         <button type="submit" ng-disabled="userForm.$invalid">Add User</button>
     </form>
     <br>
     
-    <!-- Table to display user information -->
     <table>
         <thead>
             <tr>
@@ -29,7 +25,6 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Loop through users and display information in table rows -->
             <tr ng-repeat="user in users">
                 <td>{{ user.name }}</td>
                 <td>{{ user.age }}</td>
@@ -57,12 +52,9 @@
 
             $scope.editUser = function (user) {
                 var index = $scope.users.indexOf(user);
-                // Prompt for updated values with validation
                 var updatedName = prompt('Enter updated name:', user.name);
                 var updatedAge = prompt('Enter updated age:', user.age);
-                // Check if the user pressed cancel
                 if (!(updatedName == null && updatedAge == null)) {
-                    // Update the user
                     var updatedUser = { name: updatedName, age: parseInt(updatedAge) };
                     $scope.users.splice(index, 1, updatedUser);
                 }
