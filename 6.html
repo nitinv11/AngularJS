@@ -10,7 +10,6 @@
 
     <h1>Todo List</h1>
 
-    <!-- Form for adding a new task -->
     <form ng-submit="addTask()">
         Task:
         <input type="text" ng-model="newTask" required>
@@ -19,7 +18,6 @@
 
     <br>
 
-    <!-- Table to display task information -->
     <table>
         <thead>
             <tr>
@@ -38,7 +36,6 @@
         </tbody>
     </table>
 
-    <!-- Edit Task Modal -->
     <div ng-if="editingTaskIndex !== null">
         <h2>Edit Task</h2>
         Task:
@@ -62,11 +59,8 @@
             };
 
             $scope.editTask = function (index) {
-                // Prompt for updated task with validation
                 var updatedTask = prompt('Enter updated task:');
-                // Check if the user pressed cancel
                 if (updatedTask !== null) {
-                    // Update the task
                     $scope.tasks.splice(index, 1, updatedTask);
                 }
             };
@@ -76,12 +70,10 @@
             };
 
             $scope.saveEdit = function () {
-                // Additional save logic if needed
                 $scope.editingTaskIndex = null;
             };
 
             $scope.cancelEdit = function () {
-                // Additional cancel logic if needed
                 $scope.editingTaskIndex = null;
             };
         });
